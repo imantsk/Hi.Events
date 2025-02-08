@@ -13,70 +13,84 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      - uses: mskelton/setup-yarn@v3
+      - name: Setup yarn
+        uses: mskelton/setup-yarn@v3
         with:
-          node-version: 20
+          node-version: '20'
 
-      - uses: shivammathur/setup-php@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.2
-          extensions: gd, pdo_pgsql, sodium, curl, intl, mbstring, xml, zip, bcmath
+          php-version: '8.2'
+          extensions: 'gd, pdo_pgsql, sodium, curl, intl, mbstring, xml, zip, bcmath'
 
       - name: Log in to GitHub Container Registry
         id: login-ghcr
         uses: docker/login-action@v3.1.0
         with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GHCR_PAT }}
+          registry: 'ghcr.io'
+          username: '${{ github.repository_owner }}'
+          password: '${{ secrets.GHCR_PAT }}'
 
       # All-in-one Image Steps
       - name: Extract metadata (tags, labels) for All-in-one Docker
         id: meta_all_in_one
         uses: docker/metadata-action@v3
         with:
-          images:  ghcr.io/imantsk/hi.events-all-in-one
+          images: 'ghcr.io/imantsk/hi.events-all-in-one'
+          tags: |
+            type=ref,event=tag
+            type=ref,event=branch,pattern=main
+            type=raw,value=latest
 
       - name: Build and push All-in-one Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./
-          file: ./Dockerfile.all-in-one
+          context: './'
+          file: './Dockerfile.all-in-one'
           push: true
-          platforms: linux/arm64
-          tags: ${{ steps.meta_all_in_one.outputs.tags }}
-          labels: ${{ steps.meta_all_in_one.outputs.labels }}
+          platforms: 'linux/arm64'
+          tags: '${{ steps.meta_all_in_one.outputs.tags }}'
+          labels: '${{ steps.meta_all_in_one.outputs.labels }}'
 
       # Backend Image Steps
       - name: Extract metadata (tags, labels) for Backend Docker
         id: meta_backend
         uses: docker/metadata-action@v3
         with:
-          images:  ghcr.io/imantsk/hi.events-backend
+          images: 'ghcr.io/imantsk/hi.events-backend'
+          tags: |
+            type=ref,event=tag
+            type=ref,event=branch,pattern=main
+            type=raw,value=latest
 
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./backend
-          file: ./backend/Dockerfile
+          context: './backend'
+          file: './backend/Dockerfile'
           push: true
-          platforms: linux/arm64
-          tags: ${{ steps.meta_backend.outputs.tags }}
-          labels: ${{ steps.meta_backend.outputs.labels }}
+          platforms: 'linux/arm64'
+          tags: '${{ steps.meta_backend.outputs.tags }}'
+          labels: '${{ steps.meta_backend.outputs.labels }}'
 
       # Frontend Image Steps
       - name: Extract metadata (tags, labels) for Frontend Docker
         id: meta_frontend
         uses: docker/metadata-action@v3
         with:
-          images:  ghcr.io/imantsk/hi.events-frontend
+          images: 'ghcr.io/imantsk/hi.events-frontend'
+          tags: |
+            type=ref,event=tag
+            type=ref,event=branch,pattern=main
+            type=raw,value=latest
 
       - name: Build and push Frontend Docker image
         uses: docker/build-push-action@v3
         with:
-          context: ./frontend
-          file: ./frontend/Dockerfile.ssr
+          context: './frontend'
+          file: './frontend/Dockerfile.ssr'
           push: true
-          platforms: linux/arm64
-          tags: ${{ steps.meta_frontend.outputs.tags }}
-          labels: ${{ steps.meta_frontend.outputs.labels }}
+          platforms: 'linux/arm64'
+          tags: '${{ steps.meta_frontend.outputs.tags }}'
+          labels: '${{ steps.meta_frontend.outputs.labels }}'
