@@ -22,29 +22,6 @@ jobs:
           php-version: 8.2
           extensions: gd, pdo_pgsql, sodium, curl, intl, mbstring, xml, zip, bcmath
 
-      - name: Set Docker image tags and repository information
-        id: prep
-        run: |
-          DOCKER_IMAGE=ghcr.io/${{ github.repository }}
-          VERSION=${GITHUB_SHA::8}
-
-          # If this is a git tag, use the tag name as a docker tag
-          if [[ $GITHUB_REF == refs/tags/* ]]; then
-            VERSION=${GITHUB_REF#refs/tags/}
-          fi
-
-          TAGS="${DOCKER_IMAGE}:${VERSION}"
-          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
-          echo "docker_image=${DOCKER_IMAGE}" >> $GITHUB_OUTPUT
-
-          # Set the package name for cleanup
-          CURRENT_REPO="${{ github.repository }}"
-          ORG_NAME=${CURRENT_REPO%%/*}
-          REPO_NAME=${CURRENT_REPO#*/}
-          echo "owner=${ORG_NAME}" >> $GITHUB_OUTPUT
-          echo "package=${REPO_NAME}-dev" >> $GITHUB_OUTPUT
-          echo "version=${VERSION}" >> $GITHUB_OUTPUT
-
       - name: Log in to GitHub Container Registry
         id: login-ghcr
         uses: docker/login-action@v3.1.0
@@ -58,7 +35,7 @@ jobs:
         id: meta_all_in_one
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/imantsk/hi.events-all-in-one
+          images: imantsk/hi.events-all-in-one
 
       - name: Build and push All-in-one Docker image
         uses: docker/build-push-action@v3
@@ -74,7 +51,7 @@ jobs:
         id: meta_backend
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/imantsk/hi.events-backend
+          images: imantsk/hi.events-backend
 
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v3
@@ -90,7 +67,7 @@ jobs:
         id: meta_frontend
         uses: docker/metadata-action@v3
         with:
-          images: ghcr.io/imantsk/hi.events-frontend
+          images: imantsk/hi.events-frontend
 
       - name: Build and push Frontend Docker image
         uses: docker/build-push-action@v3
@@ -100,15 +77,3 @@ jobs:
           push: true
           tags: ${{ steps.meta_frontend.outputs.tags }}
           labels: ${{ steps.meta_frontend.outputs.labels }}
-
-      - name: Cleanup GitHub Container Registry
-        uses: davahome/ghcr-cleanup@v1.1
-        with:
-          owner: ${{ steps.prep.outputs.owner }}
-          package: ${{ steps.prep.outputs.package }}
-          token: ${{ secrets.GHCR_PAT }}
-          skip_tags: ${{ steps.prep.outputs.version }}
-          delete_untagged: 1
-          delete_tagged: 1
-          keep_versions: 0
-          minimum_days: 0
