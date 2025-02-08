@@ -43,6 +43,7 @@ jobs:
           context: ./
           file: ./Dockerfile.all-in-one
           push: true
+          platforms: linux/arm64
           tags: ${{ steps.meta_all_in_one.outputs.tags }}
           labels: ${{ steps.meta_all_in_one.outputs.labels }}
 
@@ -59,6 +60,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
+          platforms: linux/arm64
           tags: ${{ steps.meta_backend.outputs.tags }}
           labels: ${{ steps.meta_backend.outputs.labels }}
 
@@ -75,5 +77,6 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile.ssr
           push: true
+          platforms: linux/arm64
           tags: ${{ steps.meta_frontend.outputs.tags }}
           labels: ${{ steps.meta_frontend.outputs.labels }}
