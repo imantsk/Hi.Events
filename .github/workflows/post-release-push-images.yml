@@ -35,7 +35,7 @@ jobs:
         id: meta_all_in_one
         uses: docker/metadata-action@v3
         with:
-          images: imantsk/hi.events-all-in-one
+          images:  ghcr.io/imantsk/hi.events-all-in-one
 
       - name: Build and push All-in-one Docker image
         uses: docker/build-push-action@v3
@@ -52,7 +52,7 @@ jobs:
         id: meta_backend
         uses: docker/metadata-action@v3
         with:
-          images: imantsk/hi.events-backend
+          images:  ghcr.io/imantsk/hi.events-backend
 
       - name: Build and push Backend Docker image
         uses: docker/build-push-action@v3
@@ -69,7 +69,7 @@ jobs:
         id: meta_frontend
         uses: docker/metadata-action@v3
         with:
-          images: imantsk/hi.events-frontend
+          images:  ghcr.io/imantsk/hi.events-frontend
 
       - name: Build and push Frontend Docker image
         uses: docker/build-push-action@v3
