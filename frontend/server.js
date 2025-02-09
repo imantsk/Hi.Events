@@ -10,6 +10,7 @@ import path from "node:path";
 import {fileURLToPath} from "node:url";
 import * as nodePath from "node:path";
 import * as nodeUrl from "node:url";
+import rateLimit from "express-rate-limit";
 
 installGlobals();
 
@@ -30,6 +31,16 @@ const ssrManifest = isProduction
     : undefined;
 
 const app = express();
+
+// set up rate limiter: maximum of 100 requests per 15 minutes
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // max 100 requests per windowMs
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
+
 app.use(cookieParser());
 
 app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known')));
