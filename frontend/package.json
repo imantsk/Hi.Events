@@ -63,7 +63,8 @@
     "react-qr-code": "^2.0.12",
     "react-router-dom": "^6.11.2",
     "recharts": "2",
-    "sirv": "^2.0.4"
+    "sirv": "^2.0.4",
+    "express-rate-limit": "^7.5.0"
   },
   "devDependencies": {
     "@lingui/cli": "^4.7.0",
