@@ -32,15 +32,6 @@ const ssrManifest = isProduction
 
 const app = express();
 
-// set up rate limiter: maximum of 100 requests per 15 minutes
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // max 100 requests per windowMs
-});
-
-// apply rate limiter to all requests
-app.use(limiter);
-
 app.use(cookieParser());
 
 app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known')));
@@ -98,7 +89,15 @@ app.use("*", async (req, res) => {
 
         const envVariablesHtml = `<script>window.hievents = ${getViteEnvironmentVariables()};</script>`;
 
+        const headSnippets = [];
+        if (process.env.VITE_FATHOM_SITE_ID) {
+            headSnippets.push(`
+                <script src="https://cdn.usefathom.com/script.js" data-spa="auto" data-site="${process.env.VITE_FATHOM_SITE_ID}" defer></script>
+            `);
+        }
+
         const html = template
+            .replace("<!--head-snippets-->", headSnippets.join("\n"))
             .replace("<!--app-html-->", appHtml)
             .replace("<!--dehydrated-state-->", `<script>window.__REHYDRATED_STATE__ = ${stringifiedState}</script>`)
             .replace("<!--environment-variables-->", envVariablesHtml)
