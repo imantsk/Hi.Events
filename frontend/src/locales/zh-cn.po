@@ -344,7 +344,7 @@ msgstr "添加关于订单的备注。这些信息不会对客户可见。"
 msgid "Add any notes about the order..."
 msgstr "添加关于订单的备注..."
 
-#: src/components/forms/QuestionForm/index.tsx:203
+#: src/components/forms/QuestionForm/index.tsx:202
 msgid "Add description"
 msgstr "添加描述"
 
@@ -518,8 +518,12 @@ msgstr "问题排序时发生错误。请重试或刷新页面"
 #~ msgstr "在整理门票时发生错误。请重试或刷新页面"
 
 #: src/components/routes/welcome/index.tsx:75
-msgid "An event is the actual event you are hosting. You can add more details later."
-msgstr "事件是您要举办的实际活动。您可以稍后添加更多细节。"
+#~ msgid "An event is the actual event you are hosting. You can add more details later."
+#~ msgstr "事件是您要举办的实际活动。您可以稍后添加更多细节。"
+
+#: src/components/routes/welcome/index.tsx:75
+msgid "An event is the gathering or occasion you’re organizing. You can add more details later."
+msgstr ""
 
 #: src/components/routes/welcome/index.tsx:23
 msgid "An organizer is the company or person who is hosting the event"
@@ -1371,7 +1375,7 @@ msgstr "创建活动"
 msgid "Create new"
 msgstr "创建新的"
 
-#: src/components/forms/OrganizerForm/index.tsx:110
+#: src/components/forms/OrganizerForm/index.tsx:111
 #: src/components/modals/CreateEventModal/index.tsx:94
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -2333,7 +2337,7 @@ msgstr "隐藏问题"
 msgid "hidden questions"
 msgstr "隐藏问题"
 
-#: src/components/forms/QuestionForm/index.tsx:219
+#: src/components/forms/QuestionForm/index.tsx:218
 msgid "Hidden questions are only visible to the event organizer and not to the customer."
 msgstr "隐藏问题只有活动组织者可以看到，客户看不到。"
 
@@ -2374,7 +2378,7 @@ msgstr "隐藏侧边栏中的入门页面"
 msgid "Hide this product from customers"
 msgstr "对客户隐藏此产品"
 
-#: src/components/forms/QuestionForm/index.tsx:220
+#: src/components/forms/QuestionForm/index.tsx:219
 msgid "Hide this question"
 msgstr "隐藏此问题"
 
@@ -2741,7 +2745,7 @@ msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam placerat ele
 msgid "Make billing address mandatory during checkout"
 msgstr "在结账时强制要求填写账单地址"
 
-#: src/components/forms/QuestionForm/index.tsx:213
+#: src/components/forms/QuestionForm/index.tsx:212
 msgid "Make this question mandatory"
 msgstr "将此问题作为必答题"
 
@@ -2808,7 +2812,7 @@ msgstr "管理您的支付处理并查看平台费用"
 msgid "Manage your users and their permissions"
 msgstr "管理用户及其权限"
 
-#: src/components/forms/QuestionForm/index.tsx:212
+#: src/components/forms/QuestionForm/index.tsx:211
 msgid "Mandatory questions must be answered before the customer can checkout."
 msgstr "在顾客结账前，必须回答必填问题。"
 
@@ -3842,7 +3846,7 @@ msgstr "促销代码可用于提供折扣、预售权限或为您的活动提供
 msgid "Promo Codes Report"
 msgstr "促销代码报告"
 
-#: src/components/forms/QuestionForm/index.tsx:190
+#: src/components/forms/QuestionForm/index.tsx:189
 msgid ""
 "Provide additional context or instructions for this question. Use this field to add terms\n"
 "and conditions, guidelines, or any important information that attendees need to know before answering."
@@ -3873,11 +3877,11 @@ msgstr "销售数量"
 msgid "Question deleted"
 msgstr "问题已删除"
 
-#: src/components/forms/QuestionForm/index.tsx:189
+#: src/components/forms/QuestionForm/index.tsx:188
 msgid "Question Description"
 msgstr "问题描述"
 
-#: src/components/forms/QuestionForm/index.tsx:179
+#: src/components/forms/QuestionForm/index.tsx:178
 msgid "Question Title"
 msgstr "问题标题"
 
@@ -5514,7 +5518,7 @@ msgstr "此容量应适用于哪些产品？"
 #~ msgid "What tickets should this question be apply to?"
 #~ msgstr "该问题应适用于哪些机票？"
 
-#: src/components/forms/QuestionForm/index.tsx:180
+#: src/components/forms/QuestionForm/index.tsx:179
 msgid "What time will you be arriving?"
 msgstr "您什么时候抵达？"
 

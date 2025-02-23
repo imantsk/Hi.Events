@@ -344,7 +344,7 @@ msgstr "Fügen Sie Notizen zur Bestellung hinzu. Diese sind für den Kunden nich
 msgid "Add any notes about the order..."
 msgstr "Fügen Sie Notizen zur Bestellung hinzu..."
 
-#: src/components/forms/QuestionForm/index.tsx:203
+#: src/components/forms/QuestionForm/index.tsx:202
 msgid "Add description"
 msgstr "Beschreibung hinzufügen"
 
@@ -518,8 +518,12 @@ msgstr "Beim Sortieren der Fragen ist ein Fehler aufgetreten. Bitte versuchen Si
 #~ msgstr "Beim Sortieren der Tickets ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder aktualisieren Sie die Seite"
 
 #: src/components/routes/welcome/index.tsx:75
-msgid "An event is the actual event you are hosting. You can add more details later."
-msgstr "Ein Event ist die eigentliche Veranstaltung, die Sie veranstalten. Sie können später weitere Details hinzufügen."
+#~ msgid "An event is the actual event you are hosting. You can add more details later."
+#~ msgstr "Ein Event ist die eigentliche Veranstaltung, die Sie veranstalten. Sie können später weitere Details hinzufügen."
+
+#: src/components/routes/welcome/index.tsx:75
+msgid "An event is the gathering or occasion you’re organizing. You can add more details later."
+msgstr ""
 
 #: src/components/routes/welcome/index.tsx:23
 msgid "An organizer is the company or person who is hosting the event"
@@ -1371,7 +1375,7 @@ msgstr "Ereignis erstellen"
 msgid "Create new"
 msgstr "Neu erstellen"
 
-#: src/components/forms/OrganizerForm/index.tsx:110
+#: src/components/forms/OrganizerForm/index.tsx:111
 #: src/components/modals/CreateEventModal/index.tsx:94
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -2333,7 +2337,7 @@ msgstr "versteckte Frage"
 msgid "hidden questions"
 msgstr "versteckte Fragen"
 
-#: src/components/forms/QuestionForm/index.tsx:219
+#: src/components/forms/QuestionForm/index.tsx:218
 msgid "Hidden questions are only visible to the event organizer and not to the customer."
 msgstr "Versteckte Fragen sind nur für den Veranstalter und nicht für den Kunden sichtbar."
 
@@ -2374,7 +2378,7 @@ msgstr "Blenden Sie die Seite „Erste Schritte“ in der Seitenleiste aus."
 msgid "Hide this product from customers"
 msgstr "Dieses Produkt vor Kunden verbergen"
 
-#: src/components/forms/QuestionForm/index.tsx:220
+#: src/components/forms/QuestionForm/index.tsx:219
 msgid "Hide this question"
 msgstr "Diese Frage verbergen"
 
@@ -2741,7 +2745,7 @@ msgstr "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ich habe das El
 msgid "Make billing address mandatory during checkout"
 msgstr "Rechnungsadresse beim Checkout erforderlich machen"
 
-#: src/components/forms/QuestionForm/index.tsx:213
+#: src/components/forms/QuestionForm/index.tsx:212
 msgid "Make this question mandatory"
 msgstr "Machen Sie diese Frage obligatorisch"
 
@@ -2808,7 +2812,7 @@ msgstr "Verwalten Sie Ihre Zahlungsabwicklung und sehen Sie die Plattformgebühr
 msgid "Manage your users and their permissions"
 msgstr "Verwalten Sie Ihre Benutzer und deren Berechtigungen"
 
-#: src/components/forms/QuestionForm/index.tsx:212
+#: src/components/forms/QuestionForm/index.tsx:211
 msgid "Mandatory questions must be answered before the customer can checkout."
 msgstr "Bevor der Kunde zur Kasse gehen kann, müssen obligatorische Fragen beantwortet werden."
 
@@ -3842,7 +3846,7 @@ msgstr "Mit Promo-Codes können Sie Rabatte oder Vorverkaufszugang anbieten oder
 msgid "Promo Codes Report"
 msgstr "Bericht zu Aktionscodes"
 
-#: src/components/forms/QuestionForm/index.tsx:190
+#: src/components/forms/QuestionForm/index.tsx:189
 msgid ""
 "Provide additional context or instructions for this question. Use this field to add terms\n"
 "and conditions, guidelines, or any important information that attendees need to know before answering."
@@ -3873,11 +3877,11 @@ msgstr "Verkaufte Menge"
 msgid "Question deleted"
 msgstr "Frage gelöscht"
 
-#: src/components/forms/QuestionForm/index.tsx:189
+#: src/components/forms/QuestionForm/index.tsx:188
 msgid "Question Description"
 msgstr "Fragebeschreibung"
 
-#: src/components/forms/QuestionForm/index.tsx:179
+#: src/components/forms/QuestionForm/index.tsx:178
 msgid "Question Title"
 msgstr "Fragentitel"
 
@@ -5514,7 +5518,7 @@ msgstr "Für welche Produkte soll diese Kapazität gelten?"
 #~ msgid "What tickets should this question be apply to?"
 #~ msgstr "Auf welche Tickets soll sich diese Frage beziehen?"
 
-#: src/components/forms/QuestionForm/index.tsx:180
+#: src/components/forms/QuestionForm/index.tsx:179
 msgid "What time will you be arriving?"
 msgstr "Um wie viel Uhr werden Sie ankommen?"
 

@@ -404,7 +404,7 @@ msgstr ""
 msgid "Add any notes about the order..."
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:203
+#: src/components/forms/QuestionForm/index.tsx:202
 msgid "Add description"
 msgstr ""
 
@@ -598,7 +598,11 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/routes/welcome/index.tsx:75
-msgid "An event is the actual event you are hosting. You can add more details later."
+#~ msgid "An event is the actual event you are hosting. You can add more details later."
+#~ msgstr ""
+
+#: src/components/routes/welcome/index.tsx:75
+msgid "An event is the gathering or occasion you’re organizing. You can add more details later."
 msgstr ""
 
 #: src/components/routes/welcome/index.tsx:23
@@ -1518,7 +1522,7 @@ msgstr ""
 msgid "Create new"
 msgstr ""
 
-#: src/components/forms/OrganizerForm/index.tsx:110
+#: src/components/forms/OrganizerForm/index.tsx:111
 #: src/components/modals/CreateEventModal/index.tsx:94
 #: src/components/modals/CreateOrganizerModal/index.tsx:16
 msgid "Create Organizer"
@@ -2564,7 +2568,7 @@ msgstr ""
 msgid "hidden questions"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:219
+#: src/components/forms/QuestionForm/index.tsx:218
 msgid "Hidden questions are only visible to the event organizer and not to the customer."
 msgstr ""
 
@@ -2609,7 +2613,7 @@ msgstr ""
 msgid "Hide this product from customers"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:220
+#: src/components/forms/QuestionForm/index.tsx:219
 msgid "Hide this question"
 msgstr ""
 
@@ -3040,7 +3044,7 @@ msgstr ""
 msgid "Make billing address mandatory during checkout"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:213
+#: src/components/forms/QuestionForm/index.tsx:212
 msgid "Make this question mandatory"
 msgstr ""
 
@@ -3131,7 +3135,7 @@ msgstr ""
 msgid "Manage your users and their permissions"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:212
+#: src/components/forms/QuestionForm/index.tsx:211
 msgid "Mandatory questions must be answered before the customer can checkout."
 msgstr ""
 
@@ -4238,7 +4242,7 @@ msgstr ""
 msgid "Promo Codes Report"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:190
+#: src/components/forms/QuestionForm/index.tsx:189
 msgid ""
 "Provide additional context or instructions for this question. Use this field to add terms\n"
 "and conditions, guidelines, or any important information that attendees need to know before answering."
@@ -4269,11 +4273,11 @@ msgstr ""
 msgid "Question deleted"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:189
+#: src/components/forms/QuestionForm/index.tsx:188
 msgid "Question Description"
 msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:179
+#: src/components/forms/QuestionForm/index.tsx:178
 msgid "Question Title"
 msgstr ""
 
@@ -6112,7 +6116,7 @@ msgstr ""
 #~ msgid "What tickets should this question be apply to?"
 #~ msgstr ""
 
-#: src/components/forms/QuestionForm/index.tsx:180
+#: src/components/forms/QuestionForm/index.tsx:179
 msgid "What time will you be arriving?"
 msgstr ""
 
