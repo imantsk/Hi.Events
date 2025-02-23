@@ -32,15 +32,6 @@ const ssrManifest = isProduction
 
 const app = express();
 
-// set up rate limiter: maximum of 100 requests per 15 minutes
-const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 500, // max 100 requests per windowMs
-});
-
-// apply rate limiter to all requests
-app.use(limiter);
-
 app.use(cookieParser());
 
 app.use('/.well-known', express.static(path.join(__dirname, 'public/.well-known')));
