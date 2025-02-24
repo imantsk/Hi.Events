@@ -26,11 +26,11 @@ jobs:
 
       - name: Log in to GitHub Container Registry
         id: login-ghcr
-        uses: docker/login-action@v3.1.0
+        uses: ./utils/registry-login
         with:
-          registry: 'ghcr.io'
-          username: '${{ github.repository_owner }}'
-          password: '${{ secrets.GHCR_PAT }}'
+          cmd: |
+            echo '${{ secrets.GHCR_PAT }}' | docker login ghcr.io -u '${{ github.repository_owner }}' --password-stdin
+            echo '${{ secrets.DOCKER_KEY }}' | docker login docker.io -u '${{ secrets.DOCKER_USER }}' --password-stdin
 
       # All-in-one Image Steps
       - name: Extract metadata (tags, labels) for All-in-one Docker
@@ -38,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ghcr.io/imantsk/hi.events-all-in-one
+            ghcr.io/${{ github.repository_owner }}/hi.events-all-in-one
             ${{ secrets.DOCKER_USER }}/hi.events-all-in-one
           tags: |
             type=ref,event=tag
@@ -61,7 +61,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ghcr.io/imantsk/hi.events-backend
+            ghcr.io/${{ github.repository_owner }}/hi.events-backend
             ${{ secrets.DOCKER_USER }}/hi.events-backend
           tags: |
             type=ref,event=tag
@@ -84,7 +84,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            ghcr.io/imantsk/hi.events-frontend
+            ghcr.io/${{ github.repository_owner }}/hi.events-frontend
             ${{ secrets.DOCKER_USER }}/hi.events-frontend
           tags: |
             type=ref,event=tag
@@ -100,29 +100,3 @@ jobs:
           platforms: 'linux/arm64'
           tags: '${{ steps.meta_frontend.outputs.tags }}'
           labels: '${{ steps.meta_frontend.outputs.labels }}'
-
-      # Log out from GHCR and log in to Docker Hub
-      - name: Log out from GHCR
-        run: docker logout ghcr.io
-
-      - name: Log in to Docker Hub
-        uses: docker/login-action@v3.1.0
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_KEY }}
-
-      # Push images to Docker Hub
-      - name: Push All-in-one image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-all-in-one:latest
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-all-in-one:${{ github.ref_name }}
-
-      - name: Push Backend image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-backend:latest
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-backend:${{ github.ref_name }}
-
-      - name: Push Frontend image to Docker Hub
-        run: |
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-frontend:latest
-          docker push ${{ secrets.DOCKER_USER }}/hi.events-frontend:${{ github.ref_name }}
