@@ -25,10 +25,7 @@ jobs:
           extensions: 'gd, pdo_pgsql, sodium, curl, intl, mbstring, xml, zip, bcmath'
 
       - name: Log in to GitHub Container Registry
-        id: login-ghcr
-        uses: ./utils/registry-login
-        with:
-          cmd: |
+        run: |
             echo '${{ secrets.GHCR_PAT }}' | docker login ghcr.io -u '${{ github.repository_owner }}' --password-stdin
             echo '${{ secrets.DOCKER_KEY }}' | docker login docker.io -u '${{ secrets.DOCKER_USER }}' --password-stdin
 
