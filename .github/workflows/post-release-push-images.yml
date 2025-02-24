@@ -7,7 +7,7 @@ on:
 
 jobs:
   push_to_registry:
-    name: Push Docker images to GHCR
+    name: Push Docker images to GHCR and Docker Hub
     runs-on: self-hosted
     steps:
       - name: Check out the repo
@@ -37,7 +37,9 @@ jobs:
         id: meta_all_in_one
         uses: docker/metadata-action@v3
         with:
-          images: 'ghcr.io/imantsk/hi.events-all-in-one'
+          images: |
+            ghcr.io/imantsk/hi.events-all-in-one
+            ${{ secrets.DOCKER_USER }}/hi.events-all-in-one
           tags: |
             type=ref,event=tag
             type=ref,event=branch,pattern=main
@@ -58,7 +60,9 @@ jobs:
         id: meta_backend
         uses: docker/metadata-action@v3
         with:
-          images: 'ghcr.io/imantsk/hi.events-backend'
+          images: |
+            ghcr.io/imantsk/hi.events-backend
+            ${{ secrets.DOCKER_USER }}/hi.events-backend
           tags: |
             type=ref,event=tag
             type=ref,event=branch,pattern=main
@@ -79,7 +83,9 @@ jobs:
         id: meta_frontend
         uses: docker/metadata-action@v3
         with:
-          images: 'ghcr.io/imantsk/hi.events-frontend'
+          images: |
+            ghcr.io/imantsk/hi.events-frontend
+            ${{ secrets.DOCKER_USER }}/hi.events-frontend
           tags: |
             type=ref,event=tag
             type=ref,event=branch,pattern=main
@@ -94,3 +100,29 @@ jobs:
           platforms: 'linux/arm64'
           tags: '${{ steps.meta_frontend.outputs.tags }}'
           labels: '${{ steps.meta_frontend.outputs.labels }}'
+
+      # Log out from GHCR and log in to Docker Hub
+      - name: Log out from GHCR
+        run: docker logout ghcr.io
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3.1.0
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_KEY }}
+
+      # Push images to Docker Hub
+      - name: Push All-in-one image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-all-in-one:latest
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-all-in-one:${{ github.ref_name }}
+
+      - name: Push Backend image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-backend:latest
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-backend:${{ github.ref_name }}
+
+      - name: Push Frontend image to Docker Hub
+        run: |
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-frontend:latest
+          docker push ${{ secrets.DOCKER_USER }}/hi.events-frontend:${{ github.ref_name }}
