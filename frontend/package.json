@@ -91,7 +91,7 @@
     "postcss-simple-vars": "^7.0.1",
     "sass": "^1.63.4",
     "typescript": "^5.0.2",
-    "vite": "^6.1.1",
+    "vite": "^6.1.2",
     "vite-bundle-visualizer": "^1.0.1",
     "vite-plugin-copy": "^0.1.6"
   }
